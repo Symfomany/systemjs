@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="container">
+
+            <h2>Hye Frontend Dev</h2>
+            <!-- rendering -->
+            <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+            <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+        
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/systemjs/0.19.40/system-csp-production.js"></script>
+            <script>
+                // set our baseURL reference path 
+                SystemJS.config({
+                    baseURL: '/js'
+                });
+                
+                // loads /js/main.js 
+                SystemJS.import('main.js');
+            </script> 
+        
+        </div>
+    </body>
+</html>

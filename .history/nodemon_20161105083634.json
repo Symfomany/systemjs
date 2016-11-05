@@ -1,0 +1,22 @@
+{
+  "verbose": true,
+   "watch": [
+    "index.html",
+    "configuration.js",
+    "css/",
+    "app/",
+    "img/"
+    ],
+  "ignore": [
+    ".git",
+    "_build",
+    "node_modules/**/node_modules"
+  ],
+  "events": {
+    "restart": "exec-notify echo Success! # -> Success rebooting..."
+  },
+
+  "env": {
+    "NODE_ENV": "development"
+  }
+}
