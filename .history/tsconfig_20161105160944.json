@@ -1,0 +1,13 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "module": "commonjs",
+        "types": ["node"],
+        "target": "es5"
+    },
+    "files": [
+        "main.ts"
+    ]
+}

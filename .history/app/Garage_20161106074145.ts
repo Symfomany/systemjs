@@ -1,0 +1,61 @@
+
+/**
+ * Class Garage
+ */
+export class Garage {
+  /**
+   * @private
+   * @type {string}
+   * @memberOf Garage
+   */
+  private _nom:string;
+
+  /**
+   * @private
+   * @type {string}
+   * @memberOf Garage
+   */
+  private _description:string;
+
+  /**
+   * @private
+   * @type {string}
+   * @memberOf Garage
+   */
+  private _ville:string;
+
+  /**
+   * @private
+   * @type {string}
+   * @memberOf Garage
+   */
+  private _adresse:string;
+
+  /**
+   * @private
+   * @type {string}
+   * @memberOf Garage
+   */
+  private _phone:string;
+
+  /**
+   * @private
+   * @type {number}
+   * @memberOf Garage
+   */
+  private _avis:number = 0;
+
+  /**
+   * @private
+   * @type {*}
+   * @memberOf Garage
+   */
+  private _horaires:any = [[9,12],[13,18]];
+
+  static PAYS = 'France';
+
+  constructor(){
+
+  }
+
+}
