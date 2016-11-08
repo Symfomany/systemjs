@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "outDir": "./dist/",
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "module": "commonjs",
+        "types": ["node"],
+        "target": "es5",
+        "pretty": true,
+        "sourceMap": true
+
+    },
+    "files": [
+        "./typings/tsd.d.ts",
+        "main.ts"
+    ]
+}
