@@ -56,8 +56,8 @@ function handleError(err) {
  * Synchronize with Browser Sync
  */
 gulp.task("build", function() {
-    gutil.log('Done!', gutil.colors.magenta('JS Buildé!'));
-    gutil.beep();
+    gutil.log('Done!', gutil.colors.magenta('123'));
+    gutil.beep()
     return Browserify
         .plugin(tsify) // with tsify :  bridge Typescript for Gulp
         .transform('babelify', {
@@ -72,8 +72,8 @@ gulp.task("build", function() {
         .pipe(sourcemaps.write('./'))
         .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
         .pipe(gulp.dest("dist"))
-        .on('error', handleError)
-        .pipe(reload({ stream: true }))
+        .on('error', handleError);
+    .pipe(reload({ stream: true }))
 
 });
 

@@ -56,32 +56,34 @@ function handleError(err) {
  * Synchronize with Browser Sync
  */
 gulp.task("build", function() {
-    gutil.log('Done!', gutil.colors.magenta('JS Buildé!'));
-    gutil.beep();
-    return Browserify
-        .plugin(tsify) // with tsify :  bridge Typescript for Gulp
-        .transform('babelify', {
-            presets: ['es2015'],
-            extensions: ['.ts']
-        }) // with Babel, compilation es6 to es5
+            gutil.log('Done!', gutil.colors.magenta('123');
 
-    .bundle()
-        .pipe(source('bundle.js')) // name of output fil bundler
-        .pipe(buffer()) // sourcemap by buffer writting
-        .pipe(sourcemaps.init({ loadMaps: true }))
-        .pipe(sourcemaps.write('./'))
-        .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
-        .pipe(gulp.dest("dist"))
-        .on('error', handleError)
-        .pipe(reload({ stream: true }))
+                return Browserify
+                    .plugin(tsify) // with tsify :  bridge Typescript for Gulp
+                    .transform('babelify', {
+                        presets: ['es2015'],
+                        extensions: ['.ts']
+                    }) // with Babel, compilation es6 to es5
 
-});
+                .bundle()
+                .pipe(source('bundle.js')) // name of output fil bundler
+                .pipe(buffer()) // sourcemap by buffer writting
+                .pipe(sourcemaps.init({ loadMaps: true }))
+                .pipe(sourcemaps.write('./'))
+                .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
+                .pipe(gulp.dest("dist"))
+                .on('error', handleError)
+                .pipe(reload({ stream: true }))
+                .pipe(gutil.log('Done!', gutil.colors.magenta('123')))
+                .pipe(gutil.beep());
+
+            });
 
 
-/**
- * Task by Default
- */
-gulp.task("default", ["build", "browser-sync"], function() {
-    gulp.watch(['main.ts', 'common.js', 'app/*'], ['build']);
-    gulp.watch(["*.html"]).on('change', browserSync.reload); //reload on HTML
-});
+        /**
+         * Task by Default
+         */
+        gulp.task("default", ["build", "browser-sync"], function() {
+            gulp.watch(['main.ts', 'common.js', 'app/*'], ['build']);
+            gulp.watch(["*.html"]).on('change', browserSync.reload); //reload on HTML
+        });

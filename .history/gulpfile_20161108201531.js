@@ -56,8 +56,6 @@ function handleError(err) {
  * Synchronize with Browser Sync
  */
 gulp.task("build", function() {
-    gutil.log('Done!', gutil.colors.magenta('JS Buildé!'));
-    gutil.beep();
     return Browserify
         .plugin(tsify) // with tsify :  bridge Typescript for Gulp
         .transform('babelify', {
@@ -66,6 +64,7 @@ gulp.task("build", function() {
         }) // with Babel, compilation es6 to es5
 
     .bundle()
+        .pipe(plumber({ errorHandler: handleError }))
         .pipe(source('bundle.js')) // name of output fil bundler
         .pipe(buffer()) // sourcemap by buffer writting
         .pipe(sourcemaps.init({ loadMaps: true }))
@@ -74,7 +73,6 @@ gulp.task("build", function() {
         .pipe(gulp.dest("dist"))
         .on('error', handleError)
         .pipe(reload({ stream: true }))
-
 });
 
 
