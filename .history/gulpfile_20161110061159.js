@@ -9,13 +9,13 @@ let browserSync = require('browser-sync');
 let plumber = require('gulp-plumber'); // for debug....
 let reload = browserSync.reload; // init browser
 
-let ts = require('gulp-typescript');
-let tsProject = ts.createProject('tsconfig.json');
 
 let Browserify = browserify({
         basedir: '.',
         debug: true,
         entries: ['./main.ts'],
+        cache: {},
+        packageCache: {}
     }).plugin(tsify)
     .on('error', browserSync.notify)
 
@@ -36,7 +36,7 @@ gulp.task('browser-sync', function() {
         server: {
             baseDir: "./", //base
             index: "index.html" //fichier a chargé
-        },
+        }
     });
 });
 
@@ -59,21 +59,26 @@ gulp.task("build", function() {
     gutil.log('Done!', gutil.colors.magenta('JS Buildé!'));
     gutil.beep();
 
-    //return Browserify
-    /*.transform('babelify', {
-        presets: ['es2015'],
-        extensions: ['.ts']
-    }) // with Babel, compilation es6 to es5
-    .bundle()
-    .pipe(source('bundle.js')) // name of output fil bundler
-    */
-    tsProject.src('app/**/*.ts')
-        .pipe(tsProject())
-        // .pipe(buffer()) // sourcemap by buffer writting
+    return Browserify
+        .transform('babelify', {
+            presets: ['es2015'],
+            extensions: ['.ts']
+        }) // with Babel, compilation es6 to es5
+        .bundle()
+        .pipe(source('bundle.js')) // name of output fil bundler
+        .pipe(buffer()) // sourcemap by buffer writting
         .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
         .pipe(gulp.dest("dist"))
         .pipe(browserSync.stream({ once: true }));
 
+});
+
+gulp.task('ts:default', function() {
+    return gulp.src('app/**/**.ts')
+        .pipe(tslint())
+        .pipe(tslint.report('prose', {
+            emitError: false
+        }));
 });
 
 
@@ -81,6 +86,6 @@ gulp.task("build", function() {
  * Task by Default
  */
 gulp.task("default", ["build", "browser-sync"], function() {
-    gulp.watch(['main.ts', 'common.js', 'app/*'], ['lint', 'build']);
+    gulp.watch(['main.ts', 'common.js', 'app/*'], ['build']);
     gulp.watch(["*.html"]).on('change', browserSync.reload); //reload on HTML
 });

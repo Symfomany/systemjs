@@ -14,7 +14,6 @@ export class Avis{
      */
     private _user:any;
 
-
     /**
      * @private
      * @type {string}
@@ -54,6 +53,8 @@ export class Avis{
 		this._content = content;
 		this._created = moment();
 	}
+    
+    
 
 
 	public get user(): any {

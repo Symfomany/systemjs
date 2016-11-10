@@ -1,24 +1,24 @@
-let gulp = require("gulp");
-let browserify = require("browserify");
-let source = require('vinyl-source-stream');
-let tsify = require("tsify");
-let notify = require("gulp-notify");
-let gutil = require("gulp-util");
-let buffer = require('vinyl-buffer');
-let browserSync = require('browser-sync');
-let plumber = require('gulp-plumber'); // for debug....
-let reload = browserSync.reload; // init browser
+var gulp = require("gulp");
+var browserify = require("browserify");
+var source = require('vinyl-source-stream');
+var tsify = require("tsify");
+var notify = require("gulp-notify");
+var gutil = require("gulp-util");
+var buffer = require('vinyl-buffer');
 
-let ts = require('gulp-typescript');
-let tsProject = ts.createProject('tsconfig.json');
-
-let Browserify = browserify({
+var Browserify = browserify({
         basedir: '.',
         debug: true,
         entries: ['./main.ts'],
+        cache: {},
+        packageCache: {}
     }).plugin(tsify)
-    .on('error', browserSync.notify)
+    .on('error', handleError)
 
+var browserSync = require('browser-sync');
+var plumber = require('gulp-plumber'); // for debug....
+var gutil = require('gulp-util');
+var reload = browserSync.reload; // init browser
 
 
 /**
@@ -36,7 +36,7 @@ gulp.task('browser-sync', function() {
         server: {
             baseDir: "./", //base
             index: "index.html" //fichier a chargé
-        },
+        }
     });
 });
 
@@ -58,21 +58,18 @@ function handleError(err) {
 gulp.task("build", function() {
     gutil.log('Done!', gutil.colors.magenta('JS Buildé!'));
     gutil.beep();
-
-    //return Browserify
-    /*.transform('babelify', {
-        presets: ['es2015'],
-        extensions: ['.ts']
-    }) // with Babel, compilation es6 to es5
-    .bundle()
-    .pipe(source('bundle.js')) // name of output fil bundler
-    */
-    tsProject.src('app/**/*.ts')
-        .pipe(tsProject())
-        // .pipe(buffer()) // sourcemap by buffer writting
+    return Browserify
+        .transform('babelify', {
+            presets: ['es2015'],
+            extensions: ['.ts']
+        }) // with Babel, compilation es6 to es5
+        .bundle()
+        .pipe(source('bundle.js')) // name of output fil bundler
+        .pipe(buffer()) // sourcemap by buffer writting
         .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
         .pipe(gulp.dest("dist"))
-        .pipe(browserSync.stream({ once: true }));
+        .on('error', handleError)
+        .pipe(reload({ stream: true }))
 
 });
 
@@ -81,6 +78,6 @@ gulp.task("build", function() {
  * Task by Default
  */
 gulp.task("default", ["build", "browser-sync"], function() {
-    gulp.watch(['main.ts', 'common.js', 'app/*'], ['lint', 'build']);
+    gulp.watch(['main.ts', 'common.js', 'app/*'], ['build']);
     gulp.watch(["*.html"]).on('change', browserSync.reload); //reload on HTML
 });

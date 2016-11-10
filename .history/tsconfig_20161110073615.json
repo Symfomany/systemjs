@@ -6,7 +6,6 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "module": "commonjs",
-        "removeComments": false,
         "compileOnSave": true,
         "target": "es6"
     },

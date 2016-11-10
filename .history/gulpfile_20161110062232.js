@@ -36,7 +36,7 @@ gulp.task('browser-sync', function() {
         server: {
             baseDir: "./", //base
             index: "index.html" //fichier a chargé
-        },
+        }
     });
 });
 
@@ -68,7 +68,11 @@ gulp.task("build", function() {
     .pipe(source('bundle.js')) // name of output fil bundler
     */
     tsProject.src('app/**/*.ts')
-        .pipe(tsProject())
+   . pipe(tsProject())
+        .pipe(ts({
+            noImplicitAny: true,
+            out: 'output.js'
+        }))
         // .pipe(buffer()) // sourcemap by buffer writting
         .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
         .pipe(gulp.dest("dist"))

@@ -8,6 +8,7 @@
         "module": "commonjs",
         "removeComments": false,
         "compileOnSave": true,
+        "outFile": "./dest/bundle.js",
         "target": "es6"
     },
     "exclude": [

@@ -10,7 +10,6 @@ let plumber = require('gulp-plumber'); // for debug....
 let reload = browserSync.reload; // init browser
 
 let ts = require('gulp-typescript');
-let tsProject = ts.createProject('tsconfig.json');
 
 let Browserify = browserify({
         basedir: '.',
@@ -37,6 +36,7 @@ gulp.task('browser-sync', function() {
             baseDir: "./", //base
             index: "index.html" //fichier a chargé
         },
+        browser: 'google chrome canary'
     });
 });
 
@@ -59,17 +59,14 @@ gulp.task("build", function() {
     gutil.log('Done!', gutil.colors.magenta('JS Buildé!'));
     gutil.beep();
 
-    //return Browserify
-    /*.transform('babelify', {
-        presets: ['es2015'],
-        extensions: ['.ts']
-    }) // with Babel, compilation es6 to es5
-    .bundle()
-    .pipe(source('bundle.js')) // name of output fil bundler
-    */
-    tsProject.src('app/**/*.ts')
-        .pipe(tsProject())
-        // .pipe(buffer()) // sourcemap by buffer writting
+    return Browserify
+        .transform('babelify', {
+            presets: ['es2015'],
+            extensions: ['.ts']
+        }) // with Babel, compilation es6 to es5
+        .bundle()
+        .pipe(source('bundle.js')) // name of output fil bundler
+        .pipe(buffer()) // sourcemap by buffer writting
         .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
         .pipe(gulp.dest("dist"))
         .pipe(browserSync.stream({ once: true }));

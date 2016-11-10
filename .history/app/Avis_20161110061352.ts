@@ -12,8 +12,7 @@ export class Avis{
      * @type {*}
      * @memberOf Avis
      */
-    private _user:any;
-
+    private _user:an;
 
     /**
      * @private

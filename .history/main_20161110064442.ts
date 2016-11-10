@@ -31,8 +31,7 @@ const user = {
     avatar: "https://cdn1.iconfinder.com/data/icons/user-pictures/100/male3-512.png",
     nom: "Boyer",
     ville: "Lyon"
-};
-
+}
 let autoLyon = new Garage("Auto Moto Lyon 3");
 const avis = new Avis("Superbe Voiture, Eleguante!", user);
 const avisTwo = new Avis("Joli bagnole :)",  user);
@@ -62,7 +61,6 @@ console.info(`La voiture la plus chère est  ${Vehicule.compare(bmw,audi).marque
 })*/
 
 // Un peu de Jquery
-/*
 $(function(){
     let voiture = bmw;
     let description = `<p>${voiture.marque} - ${voiture.modele} 
@@ -72,4 +70,3 @@ $(function(){
     $('div.content h2').text(voiture.marque +" "+voiture.modele);
     $('div.content .mdl-card__supporting-text').html(description);
 });
-*/

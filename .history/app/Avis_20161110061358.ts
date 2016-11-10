@@ -14,7 +14,6 @@ export class Avis{
      */
     private _user:any;
 
-
     /**
      * @private
      * @type {string}

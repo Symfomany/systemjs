@@ -62,7 +62,6 @@ console.info(`La voiture la plus chère est  ${Vehicule.compare(bmw,audi).marque
 })*/
 
 // Un peu de Jquery
-/*
 $(function(){
     let voiture = bmw;
     let description = `<p>${voiture.marque} - ${voiture.modele} 
@@ -72,4 +71,3 @@ $(function(){
     $('div.content h2').text(voiture.marque +" "+voiture.modele);
     $('div.content .mdl-card__supporting-text').html(description);
 });
-*/

@@ -67,8 +67,12 @@ gulp.task("build", function() {
     .bundle()
     .pipe(source('bundle.js')) // name of output fil bundler
     */
-    tsProject.src('app/**/*.ts')
-        .pipe(tsProject())
+    gulp.src('app/**/*.ts')
+        .pipe(ts({
+            noImplicitAny: true,
+            out: 'output.js',
+            target: 'es6'
+        }))
         // .pipe(buffer()) // sourcemap by buffer writting
         .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
         .pipe(gulp.dest("dist"))

@@ -69,8 +69,9 @@ gulp.task("build", function() {
     */
     tsProject.src('app/**/*.ts')
         .pipe(tsProject())
-        // .pipe(buffer()) // sourcemap by buffer writting
-        .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
+
+    // .pipe(buffer()) // sourcemap by buffer writting
+    .pipe(notify("Bundler avec Typescript, Babel,BrowserSync & SourceMaps !!"))
         .pipe(gulp.dest("dist"))
         .pipe(browserSync.stream({ once: true }));
 

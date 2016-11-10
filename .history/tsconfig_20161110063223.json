@@ -6,8 +6,7 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "module": "commonjs",
-        "removeComments": false,
-        "compileOnSave": true,
+        "types": ["node"],
         "target": "es6"
     },
     "exclude": [
@@ -15,6 +14,6 @@
     ],
     "files": [
         "./typings/tsd.d.ts",
-        "main.ts" //entry point
+        "main.ts"
     ]
 }
