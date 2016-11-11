@@ -1,0 +1,3 @@
+{ // option of Babel here
+    "presets": ["es2015"]
+}

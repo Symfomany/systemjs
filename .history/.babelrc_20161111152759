@@ -1,0 +1,4 @@
+{ // option of Babel here
+    presets: ['es2015'],
+    extensions: ['.ts']
+}
