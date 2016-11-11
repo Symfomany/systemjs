@@ -1,11 +1,8 @@
 /**
- * Datas
+ * name
  */
-class Datas {
-
+class name {
     constructor(parameters) {
         
     }
 }
-
-
