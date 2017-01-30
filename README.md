@@ -1,3 +1,30 @@
+# Oriented Object
+1. Classes
+
++ Classes
++ Inheritance
++ Encapsulation: private protected, public
++ Gette/Setter
++ Readonly (constante)
++ Static property (no instance)
++ Résolution de portée (Static, Abstract)
+
+2. Interfaces
+
++ Typage of Object
++ Optional Properties
++ Readonly properties
+
+
+
+!!!
+    The easiest way to remember whether to use readonly 
+    or const is to ask whether you’re using it on a variable or a property. 
+    Variables use const whereas properties use readonly.
+!!!
+
+
+
 # Webpack & TypeScript
 
     + Task Runner Webpack ou Gulp
@@ -33,7 +60,7 @@
 
 ```
 webpack --progress --colors --watch
-
+or 
 gulp
 ```
 *Webpack because...*

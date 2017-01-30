@@ -2,13 +2,13 @@ import {Avis} from './Avis';
 import {MotorInterface} from './MotorInterface';
 import {map,remove,indexOf,find} from 'lodash';
 import * as moment from 'moment';
-import * as request from 'request';
+// import * as request from 'request';
 
 
-    /**
-     * @class Vehicule
-     */  
-    export class Vehicule implements MotorInterface {
+/**
+    * @class Vehicule
+    */  
+export abstract class Vehicule implements MotorInterface {
 
         
         private  _prix:number;
@@ -143,60 +143,60 @@ import * as request from 'request';
             this._avis.map((elt) => { elt.visible = action }); 
         }
 
-        /**
-         * @returns Promise
-         * @memberOf Vehicule
-         */
-        public getProprietaire(nat:string = "fr"){
-             return request.get(`https://randomuser.me/api/?nat=${nat}`, function (error, response, body) {
-                if (!error && response.statusCode === 200) {
-                        return JSON.parse(body);
-                }
-            });
-        }
+        // /**
+        //  * @returns Promise
+        //  * @memberOf Vehicule
+        //  */
+        // public getProprietaire(nat:string = "fr"){
+        //      return request.get(`https://randomuser.me/api/?nat=${nat}`, function (error, response, body) {
+        //         if (!error && response.statusCode === 200) {
+        //                 return JSON.parse(body);
+        //         }
+        //     });
+        // }
         
 
-        /**
-         * @returns Promise
-         * @memberOf Vehicule
-         */
-        public getInteresses(limit:number = 10){
-             return request.get(`https://randomuser.me/api/?results=${limit}`, function (error, response, body) {
-                if (!error && response.statusCode === 200) {
-                     return JSON.parse(body);
-                }
-            });
+        // /**
+        //  * @returns Promise
+        //  * @memberOf Vehicule
+        //  */
+        // public getInteresses(limit:number = 10){
+        //      return request.get(`https://randomuser.me/api/?results=${limit}`, function (error, response, body) {
+        //         if (!error && response.statusCode === 200) {
+        //              return JSON.parse(body);
+        //         }
+        //     });
 
-        }
+        // }
 
-        /**
-         * @param {number} [limit=10]
-         * @returns
-         * @memberOf Vehicule
-         */
-        public getFavoris(limit:number = 10){
-             return request.get(`https://randomuser.me/api/?results=${limit}`, function (error, response, body) {
-                if (!error && response.statusCode === 200) {
-                     return JSON.parse(body);
-                }
-            });
+        // /**
+        //  * @param {number} [limit=10]
+        //  * @returns
+        //  * @memberOf Vehicule
+        //  */
+        // public getFavoris(limit:number = 10){
+        //      return request.get(`https://randomuser.me/api/?results=${limit}`, function (error, response, body) {
+        //         if (!error && response.statusCode === 200) {
+        //              return JSON.parse(body);
+        //         }
+        //     });
 
-        }
+        // }
         
-        /**
-         * @param {number} [limit=10]
-         * @returns
-         * 
-         * @memberOf Vehicule
-         */
-        public getPartages(limit:number = 10){
-             return request.get(`https://randomuser.me/api/?results=${limit}`, function (error, response, body) {
-                if (!error && response.statusCode === 200) {
-                     return JSON.parse(body);
-                }
-            });
+        // /**
+        //  * @param {number} [limit=10]
+        //  * @returns
+        //  * 
+        //  * @memberOf Vehicule
+        //  */
+        // public getPartages(limit:number = 10){
+        //      return request.get(`https://randomuser.me/api/?results=${limit}`, function (error, response, body) {
+        //         if (!error && response.statusCode === 200) {
+        //              return JSON.parse(body);
+        //         }
+        //     });
 
-        }
+        // }
         
 
 

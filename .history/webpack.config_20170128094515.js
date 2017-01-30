@@ -6,7 +6,7 @@ module.exports = {
     },
     devtool: "source-map",
     resolve: {
-       extensions: ['', '.ts', '.tsx', '.js'] 
+        extensions: ["", ".webpack.js", ".web.js", ".ts", ".tsx", ".js"]
     },
     module: {
         loaders: [

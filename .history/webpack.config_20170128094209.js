@@ -1,12 +1,16 @@
+var ExtractTextPlugin = require("extract-text-webpack-plugin");
+
 module.exports = {
     entry: "./main.ts",
     output: {
         path: __dirname,
         filename: "./dist/bundle.js",
     },
+    // Enable sourcemaps for debugging webpack's output.
     devtool: "source-map",
     resolve: {
-       extensions: ['', '.ts', '.tsx', '.js'] 
+        // Add '.ts' and '.tsx' as resolvable extensions.
+        extensions: ["", ".ts", ".js"]
     },
     module: {
         loaders: [

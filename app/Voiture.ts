@@ -6,7 +6,7 @@ import {Vehicule} from './Vehicule';
  * @class Voiture
  * @extends {Garage}
  */
-export class Voiture extends Vehicule {
+export  class  Voiture extends Vehicule {
 
   
   private _boite:string = "Manuelle";
@@ -16,9 +16,7 @@ export class Voiture extends Vehicule {
   private _options:string[] = ['climatisation', 'GPS', 'airbags'];
   private _vente:boolean = true;
   private _infos:Array<any> = [];
-
   public readonly _nbRoues: number = 4; 
-  
 
  /**
   * Creates an instance of Voiture.
@@ -36,9 +34,7 @@ export class Voiture extends Vehicule {
     this._kilometrage = paramsVoiture.kilometrage;
     this._annee = paramsVoiture.annee;
     this._infos = infos;
-
     this._vente = vente;
-
     this._options = [this.options, ...options]; // Concaténation pare décomposition (ES6)
 
   }
@@ -51,8 +47,20 @@ export class Voiture extends Vehicule {
   toString():string{
     return `La voiture est une ${this.marque} et elle est de ${Garage}`;
   }
+  
+  public static argus(){
+    return `La voiture a 4 roues`;
+  }
+    
+	public get boite(): string {
+		return this._boite;
+	}
 
+	public set boite(value: string) {
+		this._boite = value;
+	}
 
+  
 	public get kilometrage(): number {
 		return this._kilometrage;
 	}

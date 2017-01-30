@@ -16,6 +16,9 @@ export interface MotorInterface {
      */
     _chevaux: number;
 
+    
+    readonly bougies?:number;
+
 
     /**
      * @type {number}

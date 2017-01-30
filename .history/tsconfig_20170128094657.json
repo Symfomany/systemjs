@@ -6,12 +6,15 @@
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
         "module": "commonjs",
-        "moduleResolution": "node",
         "removeComments": false,
         "compileOnSave": true,
-        "target": "es6"
+        "target": "es5"
     },
     "exclude": [
         "node_modules"
+    ],
+    "files": [
+        //"./typings/tsd.d.ts",
+        "main.ts" //entry point
     ]
 }

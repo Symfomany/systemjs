@@ -8,11 +8,14 @@ import { Vehicule } from './app/Vehicule';
 import { Voiture } from './app/Voiture';
 import { Garage } from './app/Garage';
 import { Avis } from './app/Avis';
-import { MotorInterface } from './app/MotorInterface';
 
 (function () {
 
     "use strict";
+
+
+
+
 
     const card = new Card();
     const datasVehicule = {
@@ -60,24 +63,11 @@ import { MotorInterface } from './app/MotorInterface';
     console.log(bmw, audi);
 
     console.info(`La voiture la plus chère est  ${Vehicule.compare(bmw, audi).marque} à prix ${Vehicule.compare(bmw, audi).prix} € `);
-    
-    //console.log(bmw.carburant);
-    let {boite, kilometrage, carburant} = bmw;
-    console.log(carburant, kilometrage);
-
-    console.log(Voiture.argus());
-
-    let v8:MotorInterface = {
-      _type: "Explosion",
-      _chevaux: 4,
-      soupapes: 8,
-      emission: 10.25
-    };
-    console.log(v8); 
 
 
 
-}());
+
+});
 
 
 // console.log(card.getSearchTitles().then(function (rep) {
